@@ -1,0 +1,177 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "project.MDApp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZGW_TRAINING_DHOPTICS_SRV/",
+				"type": "OData"
+			}
+		},
+		"sourceTemplate": {
+			"id": "html5projecttemplates.2masterdetailcrud",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "project.MDApp.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.f": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "project.MDApp.i18n.i18n",
+					"data-sap-ui-language": "en"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					},
+					"defaultBindingMode": "TwoWay"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "project.MDApp.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"master"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"object",
+						"master"
+					]
+				},
+				{
+					"pattern": "CustomerSet/{CustomerId}",
+					"name": "object",
+					"target": [
+						"object",
+						"master"
+					]
+				},
+				{
+					"pattern": "OrderSet/{CustomerId}/{OrderId}/{LensfactId}",
+					"name": "detailObject",
+					"target": [
+						"detailObject",
+						"master"
+					]
+				}
+			],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "masterPages"
+				},
+				"object": {
+					"viewName": "Detail",
+					"viewLevel": 2,
+					"viewId": "detail",
+					"controlAggregation": "detailPages"
+				},
+				"shipping": {
+					"viewName": "Shipping",
+					"parent": "object",
+					"controlId": "iconTabFilterShipping",
+					"controlAggregation": "content"
+				},
+				"create": {
+					"viewName": "CreateEntity",
+					"viewLevel": 2
+				},
+				"createDetail": {
+					"viewName": "CreateDetailEntity",
+					"viewLevel": 2
+				},
+				"detailObject": {
+					"viewName": "DetailObject",
+					"viewLevel": 2,
+					"controlAggregation": "detailPages",
+					"viewId": "detailObject",
+					"transition": "flip"
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound"
+				},
+				"detailNoObjectsAvailable": {
+					"viewName": "DetailNoObjectsAvailable",
+					"viewId": "detailNoObjectsAvailable"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

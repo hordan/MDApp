@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		title="{LensfactName}"
+		class="sapUiContentPadding" >
+		<content >
+			        <Input
+         value="{LensfactId}"
+         valueLiveUpdate="true"
+         width="60%"/>
+		</content>
+		<beginButton>
+			<Button text="Save" press="onCloseDialog" />
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="project.MDApp.controller.App" displayBlock="true" busy="{appView>/busy}" busyIndicatorDelay="{appView>/delay}">
+   <SplitApp id="idAppControl" />
+</mvc:View>

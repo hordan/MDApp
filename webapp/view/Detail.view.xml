@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:semantic="sap.f.semantic" controllerName="project.MDApp.controller.Detail">
+   <semantic:SemanticPage id="page" navButtonPress="onNavBack" showNavButton="true" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+      <semantic:titleHeading>
+         <Title text="{i18n>detailTitle}" />
+      </semantic:titleHeading>
+      <semantic:headerContent>
+         <l:HorizontalLayout>
+            <l:VerticalLayout class="sapUiMediumMarginEnd">
+               <ObjectAttribute title="{i18n>FirstName}" text="{FirstName}" />
+               <ObjectAttribute title="{i18n>LastName}" text="{LastName}" />
+            </l:VerticalLayout>
+            <l:VerticalLayout>
+               <ObjectAttribute title="{i18n>Phone}" text="{Phone}" />
+               <ObjectAttribute title="{i18n>Email}" text="{Email}" />
+            </l:VerticalLayout>
+         </l:HorizontalLayout>
+      </semantic:headerContent>
+      <semantic:content>
+         <l:VerticalLayout width="100%">
+            <Table id="lineItemsList" class="sapUiSmallMarginTop" width="auto" items="{Order}" updateFinished="onListUpdateFinished" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+               <headerToolbar>
+                  <Toolbar id="lineItemsToolbar">
+                     <Title id="lineItemsHeader" text="{i18n>Orders}" />
+                  </Toolbar>
+               </headerToolbar>
+               <columns>
+                  <Column>
+                     <Text text="{i18n>OrderId}" />
+                  </Column>
+                  <Column minScreenWidth="Tablet" demandPopin="true">
+                     <Text text="{i18n>LensfactId}" />
+                  </Column>
+                  <Column minScreenWidth="Tablet" demandPopin="true">
+                     <Text text="{i18n>Fulfilled}" />
+                  </Column>
+                  <Column minScreenWidth="Tablet" demandPopin="true">
+                     <Text text="{i18n>FulfilledDate}" />
+                  </Column>
+                  <Column minScreenWidth="Tablet" demandPopin="true">
+                     <Text text="{i18n>OrderDate}" />
+                  </Column>
+               </columns>
+               <items>
+                  <ColumnListItem press=".onItemSelected" type="Navigation">
+                     <cells>
+                        <ObjectAttribute text="{OrderId}" />
+                        <ObjectAttribute text="{LensfactId}" />
+                        <ObjectAttribute text="{Fulfilled}" />
+                        <Text text="{path : 'OrderDate', type : 'sap.ui.model.type.Date', formatOptions: { style : 'medium' } }" />
+                        <Text text="{path : 'FulfilledDate', type : 'sap.ui.model.type.Date', formatOptions: { style : 'medium' } }" />
+                     </cells>
+                  </ColumnListItem>
+               </items>
+            </Table>
+         </l:VerticalLayout>
+      </semantic:content>
+      <semantic:addAction>
+         <semantic:AddAction id="addButton" press="onDetailAdd" />
+      </semantic:addAction>
+      <semantic:editAction>
+         <semantic:EditAction id="edit" press="onEdit" />
+      </semantic:editAction>
+      <semantic:deleteAction>
+         <semantic:DeleteAction id="deleteButton" press="onDelete" />
+      </semantic:deleteAction>
+   </semantic:SemanticPage>
+</mvc:View>

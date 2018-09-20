@@ -1,0 +1,36 @@
+{
+    "application": {
+        "id": "",
+        "title": "project.MDApp.MDApp",
+        "description": "Manage Details Application",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/webapp",
+        "appUrl": "#MDApp-Display",
+        "navigationComponentName": "project.MDApp",
+        "intentSemanticObject": "MDApp",
+        "intentAction": "Display",
+        "html5ApplicationName": "mdapp",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "f9e47336-e571-41fb-8d8d-d77da681827e"
+        ],
+        "contentPackages": [
+            "11ede28d-9507-4bbd-8fe4-c33a9855d7b0"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "DynamicTile",
+        "title": "Optics Business",
+        "subtitle": "Customer Details",
+        "searchKeywords": "Optics Business,Customer Details",
+        "displayIconUrl": "sap-icon://accept",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "/sap/fiori/mdapp/sap/opu/odata/sap/ZGW_TRAINING_DHOPTICS_SRV/CustomerSet/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Customer"
+    }
+}
